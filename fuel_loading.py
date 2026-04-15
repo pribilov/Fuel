@@ -4,7 +4,7 @@ from datetime import date
 
 st.set_page_config(page_title="Fuel Loading", page_icon="⛽", layout="centered")
 
-st.title("⛽ Fuel Order")
+st.title("⛽ Fuel Order B767 / B787 | Latam Airlines")
 
 # ─────────────────────────────────────────
 # FLIGHT INFORMATION
