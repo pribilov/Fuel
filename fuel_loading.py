@@ -112,6 +112,8 @@ with c3:
     else:
         st.success("✅ Carga exacta.")
 
+
+st.subheader("Realizado por Nicolette Pribilov")
 # ─────────────────────────────────────────
 # SUMMARY TABLE  (optional quick review)
 # ─────────────────────────────────────────
