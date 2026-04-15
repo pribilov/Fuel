@@ -25,16 +25,7 @@ st.divider()
 # ─────────────────────────────────────────
 # FUEL PLAN  (coordinator + captain)
 # ─────────────────────────────────────────
-st.subheader("Fuel Plan")
-c1, c2 = st.columns(2)
-with c1:
-    takeoff_fuel = st.number_input("Take Off Fuel (kg)", min_value=0, value=0, step=10)
-    taxi_fuel    = st.number_input("Taxi Fuel (kg)",     min_value=0, value=0, step=10)
-with c2:
-    block_fuel = takeoff_fuel + taxi_fuel
-    st.metric("Block Fuel (kg)  [auto]", f"{block_fuel:,}")
 
-c1, c2 = st.columns(2)
 with c1:
     captain = st.number_input(
         "Capitan Solicita: (kg)",
