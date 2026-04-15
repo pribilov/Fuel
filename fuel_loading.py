@@ -4,7 +4,7 @@ from datetime import date
 
 st.set_page_config(page_title="Fuel Loading", page_icon="⛽", layout="centered")
 
-st.title("⛽ Fuel Loading Form")
+st.title("⛽ Fuel Order")
 
 # ─────────────────────────────────────────
 # FLIGHT INFORMATION
@@ -54,14 +54,14 @@ with c2:
 c1, c2 = st.columns(2)
 with c1:
     captain = st.number_input(
-        "Captain (kg)",
+        "Capitan Solicita: (kg)",
         min_value=0,
         value=int(block_fuel),
         step=10,
         help="El capitán puede solicitar más combustible que el block fuel del coordinador."
     )
 with c2:
-    remain = st.number_input("Remain (kg)", min_value=0, value=0, step=10)
+    remain = st.number_input("Remanente (kg)", min_value=0, value=0, step=10)
 
 st.divider()
 
@@ -81,7 +81,7 @@ with c1:
 with c2:
     st.metric("To Be Fueled (L)",  f"{to_be_lts:,.1f}")
 with c3:
-    st.metric("Request to Truck (gal ↑100)", f"{gal_up:,}",
+    st.metric("Solicitar al Camion (gal ↑100)", f"{gal_up:,}",
               delta=f"exact: {gal_exact:,.1f}", delta_color="off")
 
 st.divider()
@@ -89,7 +89,7 @@ st.divider()
 # ─────────────────────────────────────────
 # TRUCK READING  (what the truck screen shows)
 # ─────────────────────────────────────────
-st.subheader("Truck Reading")
+st.subheader("Lectura del Camion de Combustible")
 gal_truck = st.number_input(
     "Gallons shown on truck screen",
     min_value=0, value=0, step=1
