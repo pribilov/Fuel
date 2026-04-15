@@ -56,7 +56,7 @@ with c1:
     captain = st.number_input(
         "Captain (kg)",
         min_value=0,
-        value=int(block_fuel),
+    #    value=int(block_fuel),
         step=10,
         help="El capitán puede solicitar más combustible que el block fuel del coordinador."
     )
