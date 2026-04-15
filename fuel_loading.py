@@ -94,30 +94,3 @@ with c3:
         st.info(f"ℹ️ Faltan **{diff_fueled:,.1f} L** por cargar.")
     else:
         st.success("✅ Carga exacta.")
-
-# ─────────────────────────────────────────
-# SUMMARY TABLE  (optional quick review)
-# ─────────────────────────────────────────
-with st.expander("📋 Resumen del formulario"):
-    st.markdown(f"""
-| Campo | Valor |
-|---|---|
-| Station | {station} |
-| Date | {fl_date} |
-| Flight | {flight} |
-| From / To | {from_to} |
-| A/C Reg | {ac_reg} |
-| Density | {density:.3f} kg/L |
-| Gamma | {gamma:.4f} |
-| Take Off Fuel | {takeoff_fuel:,} kg |
-| Taxi Fuel | {taxi_fuel:,} kg |
-| Block Fuel | {block_fuel:,} kg |
-| Captain | {captain:,} kg |
-| Remain | {remain:,} kg |
-| **To Be Fueled (kg)** | **{to_be_kg:,}** |
-| **To Be Fueled (L)** | **{to_be_lts:,.1f}** |
-| Gallons to Request | {gal_up:,} gal |
-| Truck Reading | {gal_truck:,} gal |
-| Fueled (L) | {fueled_lts:,.1f} |
-| **Difference of Fueled** | **{diff_fueled:,.1f} L** |
-""")
