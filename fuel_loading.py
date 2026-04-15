@@ -5,23 +5,6 @@ from datetime import date
 st.set_page_config(page_title="Fuel Loading", page_icon="⛽", layout="centered")
 
 st.title("⛽ Fuel Order")
-
-# ─────────────────────────────────────────
-# FLIGHT INFORMATION
-# ─────────────────────────────────────────
-st.subheader("Flight Information")
-c1, c2, c3 = st.columns(3)
-with c1:
-    station  = st.text_input("Station")
-    flight   = st.text_input("Flight")
-with c2:
-    fl_date  = st.date_input("Date", value=date.today())
-    from_to  = st.text_input("From / To", placeholder="e.g. LIM-BOG")
-with c3:
-    ac_reg   = st.text_input("A/C Reg", placeholder="e.g. OB-2034")
-
-st.divider()
-
 # ─────────────────────────────────────────
 # FUEL PARAMETERS
 # ─────────────────────────────────────────
@@ -61,7 +44,7 @@ with c1:
         help="El capitán puede solicitar más combustible que el block fuel del coordinador."
     )
 with c2:
-    remain = st.number_input("Remanente (kg)", min_value=0, value=0, step=10)
+    remain = st.number_input("Remanente de la Aeronave (kg)", min_value=0, value=0, step=10)
 
 st.divider()
 
