@@ -4,7 +4,24 @@ from datetime import date
 
 st.set_page_config(page_title="Fuel Loading", page_icon="⛽", layout="centered")
 
-st.title("⛽ Fuel Order")
+st.title("⛽ Fuel Loading Form")
+
+# ─────────────────────────────────────────
+# FLIGHT INFORMATION
+# ─────────────────────────────────────────
+st.subheader("Flight Information")
+c1, c2, c3 = st.columns(3)
+with c1:
+    station  = st.text_input("Station")
+    flight   = st.text_input("Flight")
+with c2:
+    fl_date  = st.date_input("Date", value=date.today())
+    from_to  = st.text_input("From / To", placeholder="e.g. LIM-BOG")
+with c3:
+    ac_reg   = st.text_input("A/C Reg", placeholder="e.g. OB-2034")
+
+st.divider()
+
 # ─────────────────────────────────────────
 # FUEL PARAMETERS
 # ─────────────────────────────────────────
@@ -26,25 +43,25 @@ st.divider()
 # FUEL PLAN  (coordinator + captain)
 # ─────────────────────────────────────────
 st.subheader("Fuel Plan")
-#c1, c2 = st.columns(2)
-#with c1:
-##    takeoff_fuel = st.number_input("Take Off Fuel (kg)", min_value=0, value=0, step=10)
-#    taxi_fuel    = st.number_input("Taxi Fuel (kg)",     min_value=0, value=0, step=10)
-#with c2:
-#    block_fuel = takeoff_fuel + taxi_fuel
-#    st.metric("Block Fuel (kg)  [auto]", f"{block_fuel:,}")
+c1, c2 = st.columns(2)
+with c1:
+    takeoff_fuel = st.number_input("Take Off Fuel (kg)", min_value=0, value=0, step=10)
+    taxi_fuel    = st.number_input("Taxi Fuel (kg)",     min_value=0, value=0, step=10)
+with c2:
+    block_fuel = takeoff_fuel + taxi_fuel
+    st.metric("Block Fuel (kg)  [auto]", f"{block_fuel:,}")
 
 c1, c2 = st.columns(2)
 with c1:
     captain = st.number_input(
-        "Capitan Solicita: (kg)",
+        "Captain (kg)",
         min_value=0,
         value=int(block_fuel),
         step=10,
         help="El capitán puede solicitar más combustible que el block fuel del coordinador."
     )
 with c2:
-    remain = st.number_input("Remanente de la Aeronave (kg)", min_value=0, value=0, step=10)
+    remain = st.number_input("Remain (kg)", min_value=0, value=0, step=10)
 
 st.divider()
 
@@ -64,7 +81,7 @@ with c1:
 with c2:
     st.metric("To Be Fueled (L)",  f"{to_be_lts:,.1f}")
 with c3:
-    st.metric("Solicitar al Camion (gal ↑100)", f"{gal_up:,}",
+    st.metric("Request to Truck (gal ↑100)", f"{gal_up:,}",
               delta=f"exact: {gal_exact:,.1f}", delta_color="off")
 
 st.divider()
@@ -72,7 +89,7 @@ st.divider()
 # ─────────────────────────────────────────
 # TRUCK READING  (what the truck screen shows)
 # ─────────────────────────────────────────
-st.subheader("Lectura del Camion de Combustible")
+st.subheader("Truck Reading")
 gal_truck = st.number_input(
     "Gallons shown on truck screen",
     min_value=0, value=0, step=1
@@ -94,3 +111,30 @@ with c3:
         st.info(f"ℹ️ Faltan **{diff_fueled:,.1f} L** por cargar.")
     else:
         st.success("✅ Carga exacta.")
+
+# ─────────────────────────────────────────
+# SUMMARY TABLE  (optional quick review)
+# ─────────────────────────────────────────
+with st.expander("📋 Resumen del formulario"):
+    st.markdown(f"""
+| Campo | Valor |
+|---|---|
+| Station | {station} |
+| Date | {fl_date} |
+| Flight | {flight} |
+| From / To | {from_to} |
+| A/C Reg | {ac_reg} |
+| Density | {density:.3f} kg/L |
+| Gamma | {gamma:.4f} |
+| Take Off Fuel | {takeoff_fuel:,} kg |
+| Taxi Fuel | {taxi_fuel:,} kg |
+| Block Fuel | {block_fuel:,} kg |
+| Captain | {captain:,} kg |
+| Remain | {remain:,} kg |
+| **To Be Fueled (kg)** | **{to_be_kg:,}** |
+| **To Be Fueled (L)** | **{to_be_lts:,.1f}** |
+| Gallons to Request | {gal_up:,} gal |
+| Truck Reading | {gal_truck:,} gal |
+| Fueled (L) | {fueled_lts:,.1f} |
+| **Difference of Fueled** | **{diff_fueled:,.1f} L** |
+""")
