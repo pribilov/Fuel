@@ -83,7 +83,7 @@ with c2:
 
 with c3:
     st.metric("Solicitar al Camion (gal ↑100)", f"{gal_up:,}",
-              delta=f"exact: {gal_exact:,.1f}", delta_color="off")
+              delta=f"exact: {gal_exact:,.1f}", delta_color="#888")
 
 st.divider()
 
