@@ -80,9 +80,11 @@ with c1:
     st.metric("To Be Fueled (kg)", f"{to_be_kg:,}")
 with c2:
     st.metric("To Be Fueled (L)",  f"{to_be_lts:,.1f}")
+
 with c3:
-    st.metric("Solicitar al Camion (gal ↑100)", f"{gal_up:,}",
-              delta=f"exact: {gal_exact:,.1f}", delta_color="off")
+    st.markdown('<p class="flabel">Solicitar al Camión (gal ↑100)</p>', unsafe_allow_html=True)
+    st.markdown(f'<div class="bigval">{gal_up:,}</div>', unsafe_allow_html=True)
+    st.caption(f"exact: {gal_exact:,.1f} gal")
 
 st.divider()
 
