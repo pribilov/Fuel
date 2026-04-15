@@ -113,7 +113,13 @@ with c3:
         st.success("✅ Carga exacta.")
 
 
-st.subheader("Realizado por Nicolette Pribilov")
+
+
+st.markdown(
+    '<p style="text-align:center; font-size:11px; color:#aaa; margin-top:20px;">'
+    'Realizado por Nicolette Pribilov</p>',
+    unsafe_allow_html=True
+)
 # ─────────────────────────────────────────
 # SUMMARY TABLE  (optional quick review)
 # ─────────────────────────────────────────
