@@ -25,7 +25,7 @@ st.title("⛽ Fuel Order")
 # ─────────────────────────────────────────
 # FUEL PARAMETERS
 # ─────────────────────────────────────────
-st.subheader("Fuel Parameters")
+st.subheader("Agregar Densidad")
 c1, c2 = st.columns(2)
 with c1:
     density = st.number_input(
@@ -54,14 +54,14 @@ st.divider()
 c1, c2 = st.columns(2)
 with c1:
     captain = st.number_input(
-        "Captain (kg)",
+        "Valor que se requiere recargar (kg)",
         min_value=0,
     #    value=int(block_fuel),
         step=10,
         help="El capitán puede solicitar más combustible que el block fuel del coordinador."
     )
 with c2:
-    remain = st.number_input("Remain (kg)", min_value=0, value=0, step=10)
+    remain = st.number_input("Remanente de la aeronave (kg)", min_value=0, value=0, step=10)
 
 st.divider()
 
@@ -89,9 +89,9 @@ st.divider()
 # ─────────────────────────────────────────
 # TRUCK READING  (what the truck screen shows)
 # ─────────────────────────────────────────
-st.subheader("Truck Reading")
+st.subheader("Lectura del Camion")
 gal_truck = st.number_input(
-    "Gallons shown on truck screen",
+    "Galones mostrados en la pantalla del camion de combustible",
     min_value=0, value=0, step=1
 )
 
