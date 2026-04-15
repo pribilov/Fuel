@@ -81,7 +81,7 @@ with c1:
 with c2:
     st.metric("To Be Fueled (L)",  f"{to_be_lts:,.1f}")
 with c3:
-    st.metric("Valor a solicitar al camion de combustible (gal ↑100)", f"{gal_up:,}",
+    st.metric("Solicitar al Camion (gal ↑100)", f"{gal_up:,}",
               delta=f"exact: {gal_exact:,.1f}", delta_color="off")
 
 st.divider()
